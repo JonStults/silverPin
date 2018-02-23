@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'silverball.herokuapp.com',
+    'fwpin.herokuapp.com',
     'localhost',
     '0.0.0.0'
 ]
