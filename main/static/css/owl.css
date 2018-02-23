@@ -1,0 +1,180 @@
+#sync2 {
+margin-top: 20px;
+}
+#sync2 .owl-item {
+width: 10px !important;
+height: 10px;
+background: #7d81a3;
+border-radius: 50%;
+margin: 0 6px;
+}
+#sync2 .owl-item.synced {
+background: #1c277a;
+}
+#sync2 .owl-wrapper {
+width: auto !important;
+display: inline-block !important;
+}
+
+.owl-controls {
+display: none !important;
+}
+.owl-controls.material-controls {
+display: block !important;
+}
+
+.owlwrapper {
+position: relative;
+text-align: center;
+margin-top: 100px;
+margin: 75px auto;
+width: 450px;
+height: 450px;
+}
+
+div.owl-next, div.owl-prev, div.crazy, div.woah {
+visibility: hidden;
+}
+
+.owl-item img {
+width: 450px;
+height: 450px;
+border-radius: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .owlwrapper {
+    position: relative;
+    text-align: center;
+    margin-top: 100px;
+    margin: 75px auto;
+    width: 300px;
+    height: 300px;
+  }
+  .owl-item img {
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+  }
+  .owl-stage-outer {
+    right: 25%;
+  }
+  .owl-dots {
+    margin-right: 50%;
+  }
+}
+
+.owl-prev, .owl-next, .crazy, .woah {
+position: absolute !important;
+}
+
+button {
+z-index: 99999999999 !important;
+color: grey !important;
+}
+
+.slide-text {
+position: absolute;
+bottom: 45px;
+left: 0;
+right: 0;
+margin: 0 auto;
+}
+.slide-text h2 {
+color: white;
+font-size: 22px;
+margin: 0 0 5px 0;
+}
+.slide-text p {
+color: white;
+font-size: 18px;
+font-weight: 200;
+margin: 0 0 50px 0;
+}
+
+body {
+/*background: #bdbdbd;*/
+}
+
+nav {
+background-color: #606799;
+}
+
+.owl-prev {
+top: 42%;
+left: -70px;
+}
+
+.crazy {
+  top: 42%;
+  left: -70px;
+}
+
+.owl-next {
+top: 42%;
+right: -70px;
+}
+
+.woah {
+  top: 42%;
+  right: -70px;
+}
+
+i {
+color: #1c277a !important;
+}
+
+.tournament {
+  font-size: 24px;
+  margin-bottom: 0 !important;
+  margin-top: 50px;
+  font-family: 'Audiowide', cursive;
+}
+
+
+/*@media (min-width: 870px) {
+.owl-item img {
+  width: 300px;
+}
+}
+
+@media (max-width: 869px) {
+.owl-prev {
+  left: -19px;
+}
+
+.crazy {
+  left: -19px;
+}
+
+.owl-next {
+  right: -19px;
+}
+
+.woah {
+  right: -19px;
+}
+}
+@media (max-width: 809px) {
+.owlwrapper {
+  width: 100%;
+}
+}
+@media (max-width: 809px) {
+.slide-text h2 {
+  font-size: 17px;
+}
+.slide-text p {
+  font-size: 13px;
+  margin: 0 0 15px 0;
+}
+}*/
+.container {
+  /*width: 33%;*/
+  display: inline-block;
+}
+
+.tourney-info {
+  text-align: center;
+  margin-top: 50px;
+}

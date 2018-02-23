@@ -1,0 +1,308 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SilverBall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/owl.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/social.css">
+    <link async href="https://fonts.googleapis.com/css?family=Warnes" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+    <link href="https://allfont.net/allfont.css?fonts=dot-matrix" rel="stylesheet" type="text/css" />
+    <link href="https://weloveiconfonts.com/api/?family=entypo" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway+Dots" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/css/bootstrap-material-design.min.css" integrity="sha384-R80DC0KVBO4GSTw+wZ5x2zn2pu4POSErBkf8/fSFhPXHxvHJydT0CSgAP2Yo2r4I" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,300' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+    <link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+  </head>
+  <style media="screen">
+
+  </style>
+  <body>
+    <div class="wrapper">
+
+      <div id="nah" class="page-header">
+        <div class="muffin-top" style="margin-left: 21px; width: 50%; background-color: black;">
+          <img class="pin-ends" style="margin-left: 8%" src="../static/main/leftMachine.png" alt="">
+          <p id="header-title" style="width: 500px;">Fort Wayne Pinball</p>
+          <h4 id="header-title-2">FWP</h4>
+          <img class="pin-ends" src="../static/main/rightMachine.png" alt="">
+        </div>
+        <div class="menu-button" style="display: none; text-align: right; width: 50%;">
+          <a href="#" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        </div>
+        <div class="pin-buttons" style="width: 50%; background-color: black;">
+          <a class="header-links pink" style="font: normal 20px/normal "Warnes", Helvetica, sans-serif;" id="home" href="#" onclick="changeBack();">Machines</a>
+          <a class="header-links" style="font: normal 20px/normal "Warnes", Helvetica, sans-serif;" id="location" href="#" onclick="changeDiv();">League</a>
+          <a class="header-links" style="font: normal 20px/normal "Warnes", Helvetica, sans-serif;" id="past" href="#" onclick="displayGallery();">In Memoriam</a>
+        </div>
+      </div>
+      <div class="top-image">
+        <div class="">
+          <img src="../static/main/leftFlipper.png" class="flipper-left flipperz" id="left-flipper" alt="">
+          <img src="../static/main/leftFlipper.png" class="flipper-left flipperz" id="bottom-left-flipper" alt="">
+        </div>
+        <div class="">
+          <img src="../static/main/rightFlipper.png" class="flipper-image flipperz" id="right-flipper" alt="">
+          <img src="../static/main/rightFlipper.png" class="flipper-image flipperz" id="bottom-right-flipper" alt="">
+        </div>
+      </div>
+      <div class="main-page">
+        <div id="big-mid" class="all-locations mid-content">
+          <button id="email-btn" type="button" style="position: inherit!important; margin-bottom: 30px;" class="btn btn-primary" data-toggle="modal" data-target="#modalContactForm">Machine Malfunction?</button>
+          {% for location in locations %}
+            <h3 style="font-family: 'Press Start 2P', cursive">{{location.name}}</h3>
+            <div class="rick">
+              <section class="container">
+                <section class="owlwrapper">
+                  <div id="sync1" class="owl-carousel owl-theme">
+                    {% for machine in location.machine_set.all %}
+                    <div class="item">
+                      <img src="../../media/{{machine.image}}" alt="1.jpg" />
+                      <!-- <div class="slide-text" style="background-color: lightgrey;">
+                        <h4>{{machine.name}}</h4>
+                      </div> -->
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <div class="owl-controls material-controls">
+                    <div class="owl-nav damn">
+                      {% if not location.machine_set.count == 1 %}
+                        <a style="cursor: pointer; border-radius: 50%; padding: 20px 18px 10px 18px;" class="btn-floating btn-large waves-effect grey lighten-2 crazy" onclick="goPrev(id)" title=""><i style="line-height: 0!important; top: 50;" class="material-icons">arrow_back</i></a>
+                        <a style="cursor: pointer; border-radius: 50%; padding: 20px 18px 10px 18px;" class="btn-floating btn-large waves-effect grey lighten-2 woah" onclick="goNext(id)" title=""><i style="line-height: 0!important" class="material-icons">arrow_forward</i></a>
+                      {% endif %}
+                      {% if location.machine_set.count == 1 %}
+                        <a style="display:none" class="btn-floating btn-large waves-effect grey lighten-2 crazy" onclick="goPrev(id)" title=""><i style="margin-top: 11px; margin-right: 5.5px; margin-left: 5.5px;" class="material-icons">arrow_back</i></a>
+                        <a style="display:none" class="btn-floating btn-large waves-effect grey lighten-2 woah" onclick="goNext(id)" title=""><i style="margin-top: 11px; margin-right: 5.5px; margin-left: 5.5px;" class="material-icons">arrow_forward</i></a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </section>
+              </section>
+              <div class="map" style="display: inline-block; margin-bottom: 50px;">
+                <iframe src="{{location.url}}"
+                width="500" height="450" frameborder="0" style="border:0;" allowfullscreen></iframe>
+                {% if not location.machine_set.count == 1 %}
+                  <br>
+                  <br>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+          <div class="" style="margin-top: 50px; text-align: center; margin-bottom: 50px; color: white;">
+            <h4 style="font-family: 'Audiowide', cursive;">Find other machines near you!</h4>
+            <button class="btn btn-primary"><a style="text-decoration: none; color: white;" href="https://pinballmap.com/" target="_blank">Pinball Map</a></button>
+          </div>
+        </div>
+        <div id="small-mid" class="small-mid-classic">
+          <button id="email-btn" type="button" style="position: inherit!important; margin-bottom: 0px;" class="btn btn-primary" data-toggle="modal" data-target="#modalContactForm">Machine Malfunction?</button>
+          {% for location in locations %}
+            <h5 style="font-family: 'Press Start 2P', cursive; margin-top: 30px;">{{location.name}}</h5>
+            {% for machine in location.machine_set.all %}
+            <div class="small-item">
+              <img src="../../media/{{machine.image}}" alt="1.jpg" />
+            </div>
+            {% endfor %}
+            <div class="" style="margin-top: 8px;">
+              <iframe src="{{location.url}}"
+              width="91%" height="250px" frameborder="0" style="border:0; display: block; margin: 0 auto;" allowfullscreen></iframe>
+            </div>
+            <div class="" style="width: 90%; height: 1px; background-color: lightgrey; margin-left: 5%; margin-top: 30px;">
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div id="main" class="mid-content">
+        <div class="" style="text-align: center;">
+          <h1 id="tourney-header" style="font-family: 'Press Start 2P', cursive;">Recent High Scores</h1>
+          <h3 id="machine-header" style="font-family: 'Audiowide', cursive; margin-top: 50px;">{{machine}}</h3>
+        </div>
+        <div class="scoreboard" style="height: 100px;">
+          <div class="scroll-left">
+            <h1 style="font-family: 'Raleway Dots', cursive;" id="high-score">{{scores}}</h1>
+            <h3 style="font-family: 'Raleway Dots', cursive;" id="high-score-2">{{scores}}</h3>
+            <h6 style="font-family: 'Raleway Dots', cursive;" id="high-score-3">{{scores}}</h6>
+          </div>
+        </div>
+        <div class="" style="text-align: center; margin-top: 50px;">
+          <h1 id="tourney-header" style="font-family: 'Press Start 2P', cursive;">Upcoming Tournament:</h1>
+        </div>
+        {% if yes %}
+          <div class="tourney-info">
+            <p class="tournament">Machine: {{tourney.machine}}</p>
+            <p class="tournament">Location: {{tourney.location}}</p>
+            <p class="tournament">Description: {{tourney.description}}</p>
+          </div>
+        {% else %}
+          <div class="tourney-info">
+            <h1 style="font-family: 'Audiowide', cursive;">No Tournaments Scheduled</h1>
+          </div>
+        {% endif %}
+        <div class="" style="margin-top: 50px; text-align: center; margin-bottom: 50px; color: white;">
+          <h4 style="font-family: 'Audiowide', cursive;">Check tournament scores on the PAPA website!</h4>
+          <button class="btn btn-primary"><a style="text-decoration: none; color: white;" href="https://papa.org/" target="_blank">Go to Site</a></button>
+        </div>
+      </div>
+      <div id="gallery" style="display: none" class="">
+        <div style="text-align: center; margin-bottom: 40px;" class="">
+          <iframe src="https://open.spotify.com/embed/track/2VGDntFPvgvqSiUf9ITEfW" width="300" height="100" frameborder="0" allowtransparency="true"></iframe>
+        </div>
+        <!--Carousel Wrapper-->
+        <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+            <!--Indicators-->
+            <!--/.Indicators-->
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox">
+                <!--First slide-->
+                <div class="carousel-item active">
+                    <img class="d-block w-100 old-pics" src="../../media/next_gen.jpg" alt="First slide">
+                </div>
+                <!--/First slide-->
+                <!--Second slide-->
+                {% for pic in pics %}
+                <div class="carousel-item">
+                    <img class="d-block w-100 old-pics" src="../../media/{{pic.image}}" alt="Second slide">
+                </div>
+                {% endfor %}
+                <!--/Second slide-->
+            </div>
+            <!--/.Slides-->
+            <!--Controls-->
+            <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <!--/.Controls-->
+        </div>
+      </div>
+      <div class="modal fade" style="top: 10%" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog cascading-modal" role="document" >
+              <!--Content-->
+              <div class="modal-content">
+
+                  <!--Header-->
+                  <div class="modal-header light-blue darken-3 white-text">
+                      <h4 class="title">Report Issue</h4>
+                      <button type="button" class="close waves-effect waves-light" style="color: white!important; cursor: pointer;" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <!--Body-->
+
+                  <div class="modal-body mb-0">
+                    <form class="" action="/send_email" method="post">
+                      {% csrf_token %}
+                    <div class="md-form form-sm">
+                        <input name="probMachine" type="text" id="form21" class="form-control req" required>
+                        <label for="form21">Machine Name</label>
+                    </div>
+
+                    <div class="md-form form-sm">
+                        <input name="probLocation" type="text" id="form22" class="form-control req" required>
+                        <label for="form21">Location</label>
+                    </div>
+
+                    <div class="md-form form-sm">
+                        <input name="problemDescription" type="text" id="form23" class="form-control req" required>
+                        <label for="form21">Description</label>
+                    </div>
+                    <div class="md-form form-sm">
+                        <input name="problemName" type="text" id="" class="form-control">
+                        <label for="">Your Name (optional)</label>
+                    </div>
+
+                      <div class="text-center mt-1-half">
+                          <button type="submit" disabled="disabled" id="problematic" onclick="closeModal()" class="btn btn-info mb-2">Send <i class="fa fa-send ml-1"></i></button>
+                      </div>
+                    </form>
+
+                  </div>
+              </div>
+              <!--/.Content-->
+          </div>
+      </div>
+    </div>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav();">&times;</a>
+      <a class="" id="home" href="#" onclick="changeBack(); closeNav()">Machines</a>
+      <a class="" id="location" href="#" onclick="changeDiv(); closeNav()">League</a>
+      <a class="" id="past" href="#" onclick="displayGallery(); closeNav()">Memoriam</a>
+    </div>
+    <!-- <aside id="sticky-social">
+        <ul>
+            <li><a href="https://www.facebook.com/groups/326512067523455/" class="entypo-facebook" target="_blank"><span>Facebook</span></a></li>
+        </ul>
+    </aside> -->
+    <div class="yo">
+
+    </div>
+    <div class="parallax">
+      <!-- <p style="margin: 0; line-height: 250px;">&nbsp;</p>
+      <p style="margin: 0;">hi there, hello</p> -->
+      <img src="../static/main/logo.jpg" alt="logo" class="footer-image">
+      <!-- <a href="https://www.facebook.com/groups/326512067523455/?ref=bookmarks"><i class="fa fa-facebook-f"></i></a> -->
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="../static/javascript/script.js" type="text/javascript"></script>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/js/bootstrap-material-design.js" integrity="sha384-3xciOSDAlaXneEmyOo0ME/2grfpqzhhTcM4cE32Ce9+8DW/04AGoTACzQpphYGYe" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js" type="text/javascript"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  </script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.min.js"></script>
+</html>
+
+<script type="text/javascript">
+  $('.owl-carousel').owlCarousel({
+    loop: true,
+    nav: true,
+    items: 1,
+    animateOut: 'fadeOut'
+  })
+
+  function giveID() {
+    var carouselElements = document.querySelectorAll('.crazy')
+    for(var i=0; i<carouselElements.length; i++) {
+      carouselElements[i].id = [i]
+    }
+    var carousel2Elements = document.querySelectorAll('.owl-prev')
+    for(var i=0; i<carousel2Elements.length; i++) {
+      carousel2Elements[i].id = 'button-' + [i]
+    }
+    var carousel3Elements = document.querySelectorAll('.woah')
+    for(var i=0; i<carousel3Elements.length; i++) {
+      carousel3Elements[i].id = [i] + 3
+    }
+    var carousel2Elements = document.querySelectorAll('.owl-next')
+    for(var i=0; i<carousel2Elements.length; i++) {
+      carousel2Elements[i].id = 'button-' + ([i] + 3)
+    }
+  }
+
+  function goPrev(id) {
+    $('#button-' + id).click();
+  }
+
+  function goNext(id) {
+    $('#button-' + id).click();
+  }
+
+  giveID();
+</script>
